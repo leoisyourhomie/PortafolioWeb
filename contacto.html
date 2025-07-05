@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="es" class="no-js">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Contáctame | Les</title>
+    <link rel="stylesheet" href="css/vendor.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <style>
+        body {
+            background: #181818;
+            font-family: inherit;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        .contacto-container {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem;
+            box-sizing: border-box;
+            width: 100%;
+            opacity: 0;
+            transform: translateY(40px);
+            animation: fadeInUp 0.8s cubic-bezier(.39,.575,.565,1) forwards;
+        }
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .contacto-flex {
+            display: flex;
+            flex-direction: column;
+            gap: 2.5rem;
+            width: 100%;
+            max-width: 1100px;
+            align-items: center; /* Centra los hijos horizontalmente */
+            justify-content: center; /* Centra los hijos verticalmente */
+        }
+        .contacto-info {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center; /* Centra el contenido de la columna */
+            min-width: 260px;
+            max-width: 500px;
+            padding-top: 2.5rem; /* Espaciado superior para móviles */
+            text-align: center; /* Centra el texto en móviles */
+        }
+        .contact-form {
+            background: #232323;
+            border-radius: 1rem;
+            box-shadow: 0 2px 16px rgba(0,0,0,0.12);
+            padding: 2.5rem 2rem;
+            max-width: 500px;
+            width: 100%;
+            flex: 1;
+        }
+        .contact-form label {
+            display: block;
+            color: #fff;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #444;
+            background: #181818;
+            color: #fff !important;
+            border-radius: 0.5rem;
+            font-size: 2.5 rem; /* Más grande */
+            font-family: inherit;
+            margin-bottom: 1.5rem;
+        }
+        .contact-form textarea {
+            resize: vertical;
+        }
+        .contact-form button {
+            width: 100%;
+            font-size: 1.1rem;
+        }
+        .section-header.light-on-dark .text-display-title {
+            color: #fff;
+        }
+        .section-header.light-on-dark {
+            margin-bottom: 1.5rem;
+        }
+        .attention-getter {
+            color: #eee !important;
+            font-size: 2rem;
+            font-weight: 500;
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+            text-align: center;
+            letter-spacing: 0.01em;
+        }
+        .volver-link {
+            display: inline-block;
+            margin-top: 2rem;
+            color: #fff;
+            text-decoration: underline;
+            font-size: 2rem;
+        }
+        .volver-link:hover {
+            color: #c93f1d;
+        }
+        @media (min-width: 900px) {
+            .contacto-flex {
+                flex-direction: row;
+                align-items: center; /* Centra verticalmente en horizontal */
+                justify-content: center;
+            }
+            .contacto-info {
+                align-items: center; /* Centra el contenido también en escritorio */
+                justify-content: center;
+                text-align: center;
+                padding-top: 50px;
+                padding-bottom: 100px; /* Sin espaciado extra en escritorio */
+            }
+            .attention-getter {
+                text-align: center !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="contacto-container">
+        <div class="contacto-flex">
+            <div class="contacto-info">
+                <div class="section-header light-on-dark" data-num="05">
+                    <h2 class="text-display-title">Trabajemos juntos</h2>
+                </div>
+                <p class="attention-getter">
+                    ¿Tienes una idea en mente o buscas a alguien para tu próximo proyecto?<br>
+                    ¡Escríbeme! Estoy listo para colaborar, crear y dar forma a nuevas ideas.
+                </p>
+            </div>
+            <form class="contact-form" action="send_contact.php" method="POST">
+                <label for="nombre">Nombre</label>
+                <input type="text" id="nombre" name="nombre" required>
+
+                <label for="email">Correo electrónico</label>
+                <input type="email" id="email" name="email" required>
+
+                <label for="telefono">Número de teléfono</label>
+                <input type="tel" id="telefono" name="telefono"> 
+
+                <label for="descripcion">Descripción</label>
+                <textarea id="descripcion" name="descripcion" rows="4" required></textarea>
+
+                <button type="submit" class="btn btn--primary">Enviar</button>
+            </form>
+        </div>
+        <a href="index.html" class="volver-link">Home</a>
+    </div>
+    <script>
+        if (window.location.search.includes('enviado=1')) {
+            alert('¡Tu mensaje ha sido enviado correctamente!');
+        }
+    </script>
+</body>
+</html>
